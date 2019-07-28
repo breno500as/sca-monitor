@@ -18,9 +18,9 @@ public class DadoSensorBarragem {
 
 	private TipoSensor tipoSensor;
 
-	private LocalDateTime dataAlerta;
+	private LocalDateTime dataCriacaoDadoSensor;
 
-	private LocalDateTime dataCriacao = LocalDateTime.now();
+	private LocalDateTime dataCriacaoRegistro = LocalDateTime.now();
 
 	public String getId() {
 		return id;
@@ -54,20 +54,20 @@ public class DadoSensorBarragem {
 		this.tipoSensor = tipoSensor;
 	}
 
-	public LocalDateTime getDataCriacao() {
-		return dataCriacao;
+	public LocalDateTime getDataCriacaoDadoSensor() {
+		return dataCriacaoDadoSensor;
 	}
 
-	public void setDataCriacao(LocalDateTime dataCriacao) {
-		this.dataCriacao = dataCriacao;
+	public void setDataCriacaoDadoSensor(LocalDateTime dataCriacaoDadoSensor) {
+		this.dataCriacaoDadoSensor = dataCriacaoDadoSensor;
 	}
 
-	public LocalDateTime getDataAlerta() {
-		return dataAlerta;
+	public LocalDateTime getDataCriacaoRegistro() {
+		return dataCriacaoRegistro;
 	}
 
-	public void setDataAlerta(LocalDateTime dataAlerta) {
-		this.dataAlerta = dataAlerta;
+	public void setDataCriacaoRegistro(LocalDateTime dataCriacaoRegistro) {
+		this.dataCriacaoRegistro = dataCriacaoRegistro;
 	}
 
 }

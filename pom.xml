@@ -69,8 +69,8 @@
 		</dependency>  
 		
 		<dependency>
-		   <groupId>com.puc.sca.integration.pojo</groupId>
-           <artifactId>sca-integration-pojo</artifactId>
+		   <groupId>com.puc.sca.integration.util</groupId>
+           <artifactId>sca-integration-util</artifactId>
            <version>1.0.0</version>
 		</dependency>
 		
