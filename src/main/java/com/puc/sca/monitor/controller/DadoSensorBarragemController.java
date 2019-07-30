@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.puc.sca.integration.util.Alerta;
-import com.puc.sca.monitor.enums.NivelAlerta;
+import com.puc.sca.integration.util.NivelAlerta;
 import com.puc.sca.monitor.model.DadoSensorBarragem;
 import com.puc.sca.monitor.repository.DadoSensorBarragemRepository;
 import com.puc.sca.monitor.service.ModuloAlertaService;
@@ -27,7 +27,7 @@ public class DadoSensorBarragemController {
 	public String incluiDadosSensor(@RequestBody DadoSensorBarragem dadoSensorBarragem) {
 		
 		if (NivelAlerta.NIVEL_4_ROMPIMENTO_IMINENTE.equals(dadoSensorBarragem.getNivelAlerta())) {
-			this.moduloAlertaService.acionaModuloSeguranca(new Alerta(dadoSensorBarragem.getNivelAlerta().toString()));;
+			this.moduloAlertaService.acionaModuloSeguranca(new Alerta(dadoSensorBarragem.getNivelAlerta()));;
 		}
 		
 		this.dadoSensorBarragemRepository.save(dadoSensorBarragem);

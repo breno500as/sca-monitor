@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 
-import com.puc.sca.monitor.enums.NivelAlerta;
+import com.puc.sca.integration.util.NivelAlerta;
 import com.puc.sca.monitor.enums.TipoSensor;
 
 public class DadoSensorBarragem {

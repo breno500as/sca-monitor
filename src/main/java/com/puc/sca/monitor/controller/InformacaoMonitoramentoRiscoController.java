@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.puc.sca.integration.util.Alerta;
-import com.puc.sca.monitor.enums.NivelAlerta;
+import com.puc.sca.integration.util.NivelAlerta;
 import com.puc.sca.monitor.model.InformacaoMonitoramentoRisco;
 import com.puc.sca.monitor.service.ModuloAlertaService;
 
@@ -21,7 +21,7 @@ public class InformacaoMonitoramentoRiscoController {
 
 	@PostMapping("aciona-modulo-alerta")
 	public String acionaModuloAlerta() {
-		this.moduloAlertaService.acionaModuloSeguranca(new Alerta(NivelAlerta.NIVEL_4_ROMPIMENTO_IMINENTE.toString()));
+		this.moduloAlertaService.acionaModuloSeguranca(new Alerta(NivelAlerta.NIVEL_4_ROMPIMENTO_IMINENTE));
 		return "ok";
 	}
 
