@@ -7,27 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.puc.sca.integration.util.Alerta;
-import com.puc.sca.integration.util.NivelAlerta;
-import com.puc.sca.monitor.model.InformacaoMonitoramentoRisco;
 import com.puc.sca.monitor.service.ModuloAlertaService;
 
 @RestController
-@RequestMapping("informacoes-monitoramento-risco")
-public class InformacaoMonitoramentoRiscoController {
+@RequestMapping("comunicacoes-seguranca")
+public class ComunicaoSegurancaBarragemController {
 	
 	@Autowired
 	private ModuloAlertaService moduloAlertaService;
 
 
-	@PostMapping("aciona-modulo-alerta")
-	public String acionaModuloAlerta() {
-		this.moduloAlertaService.acionaModuloSeguranca(new Alerta(NivelAlerta.NIVEL_4_ROMPIMENTO_IMINENTE));
+	@PostMapping
+	public String informaSistemasIntegrados(@RequestBody Alerta alerta) {
+		this.moduloAlertaService.acionaModuloSegurancaComunicacaoEvacuacao(alerta);
+		this.moduloAlertaService.acionaModuloSegurancaComunicacaoSitemaCorpoDeBombeiros(alerta);
+		this.moduloAlertaService.acionaModuloSegurancaIntegracaoSistemaDefesaCivil(alerta);
 		return "ok";
 	}
 
-	@PostMapping
-	public String informaSistemasIntegrados(@RequestBody InformacaoMonitoramentoRisco informacaoMonitoramentoRisco) {
-		return "ok";
-	}
+ 
 
 }

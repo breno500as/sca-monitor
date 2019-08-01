@@ -27,7 +27,9 @@ public class DadoSensorBarragemController {
 	public String incluiDadosSensor(@RequestBody DadoSensorBarragem dadoSensorBarragem) {
 		
 		if (NivelAlerta.NIVEL_4_ROMPIMENTO_IMINENTE.equals(dadoSensorBarragem.getNivelAlerta())) {
-			this.moduloAlertaService.acionaModuloSeguranca(new Alerta(dadoSensorBarragem.getNivelAlerta()));;
+			this.moduloAlertaService.acionaModuloSegurancaComunicacaoEvacuacao(new Alerta(dadoSensorBarragem.getNivelAlerta()));
+			this.moduloAlertaService.acionaModuloSegurancaComunicacaoSitemaCorpoDeBombeiros(new Alerta(dadoSensorBarragem.getNivelAlerta()));
+			this.moduloAlertaService.acionaModuloSegurancaIntegracaoSistemaDefesaCivil(new Alerta(dadoSensorBarragem.getNivelAlerta()));
 		}
 		
 		this.dadoSensorBarragemRepository.save(dadoSensorBarragem);

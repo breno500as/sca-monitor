@@ -13,9 +13,20 @@ public class ModuloAlertaService {
 	@Autowired
 	private JmsTemplate jmsTemplateTopic;
 
-	public void acionaModuloSeguranca(Alerta alerta) {
+	public void acionaModuloSegurancaComunicacaoEvacuacao(Alerta alerta) {
 		// regras de negócio, log, etc.
-		this.jmsTemplateTopic.convertAndSend(Constants.TOPICO_MODULO_SEGURACA, alerta);
+		this.jmsTemplateTopic.convertAndSend(Constants.TOPICO_MODULO_SEGURACA_COMUNICACAO_EVACUACAO, alerta);
+	}
+	
+	public void acionaModuloSegurancaIntegracaoSistemaDefesaCivil(Alerta alerta) {
+		// regras de negócio, log, etc.
+		this.jmsTemplateTopic.convertAndSend(Constants.TOPICO_MODULO_SEGURACA_INTEGRACAO_SISTEMA_DEFESA_CIVIL, alerta);
+	}
+	
+	
+	public void acionaModuloSegurancaComunicacaoSitemaCorpoDeBombeiros(Alerta alerta) {
+		// regras de negócio, log, etc.
+		this.jmsTemplateTopic.convertAndSend(Constants.TOPICO_MODULO_SEGURACA_INTEGRACAO_SISTEMA_CORPO_DE_BOMBEIROS, alerta);
 	}
 
 }
