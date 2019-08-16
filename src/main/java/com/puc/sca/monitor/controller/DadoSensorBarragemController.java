@@ -13,6 +13,11 @@ import com.puc.sca.monitor.model.DadoSensorBarragem;
 import com.puc.sca.monitor.repository.DadoSensorBarragemRepository;
 import com.puc.sca.monitor.service.ModuloAlertaService;
 
+/**
+ * Controller integrado a sensores IOT instalados na barragem informando os níveis de alerta.
+ * @author breno
+ *
+ */
 @RestController
 @RequestMapping("dados-sensor")
 public class DadoSensorBarragemController {

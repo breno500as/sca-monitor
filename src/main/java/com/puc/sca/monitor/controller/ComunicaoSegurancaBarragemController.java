@@ -12,6 +12,14 @@ import com.puc.sca.integration.util.Alerta;
 import com.puc.sca.integration.util.Constants;
 import com.puc.sca.monitor.service.ModuloAlertaService;
 
+
+/**
+ * Rest controller de comunicação entre esse microserviço de monitoramento e o microserviço do módulo de segurança e informação JMS, passando 
+ * informações para sistemas terceiros integrados.
+ * @author breno
+ *
+ */
+
 @RestController
 @RequestMapping("comunicacoes-seguranca")
 public class ComunicaoSegurancaBarragemController {
