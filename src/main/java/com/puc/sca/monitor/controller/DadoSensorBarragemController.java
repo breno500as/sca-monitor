@@ -29,7 +29,7 @@ public class DadoSensorBarragemController {
 	private ModuloAlertaService moduloAlertaService;
 
 	@PostMapping
-	public String incluiDadosSensor(@RequestBody DadoSensorBarragem dadoSensorBarragem) {
+	public void incluiDadosSensor(@RequestBody DadoSensorBarragem dadoSensorBarragem) {
 		
 		if (NivelAlerta.NIVEL_4_ROMPIMENTO_IMINENTE.equals(dadoSensorBarragem.getNivelAlerta())) {
 			this.moduloAlertaService.acionaModuloSegurancaComunicacaoEvacuacao(new Alerta(dadoSensorBarragem.getNivelAlerta()));
@@ -38,8 +38,6 @@ public class DadoSensorBarragemController {
 		}
 		
 		this.dadoSensorBarragemRepository.save(dadoSensorBarragem);
-		
-		return "Ok";
 	}
 	
 	@GetMapping
