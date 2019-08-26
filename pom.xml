@@ -94,7 +94,7 @@
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 
-		<!-- Integração JSM -->
+		<!-- Integração JMS -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
