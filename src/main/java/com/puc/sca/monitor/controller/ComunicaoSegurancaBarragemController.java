@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.puc.sca.integration.util.Alerta;
 import com.puc.sca.integration.util.Constants;
+import com.puc.sca.integration.util.NivelAlerta;
 import com.puc.sca.monitor.service.ModuloAlertaService;
 
 
@@ -34,7 +35,12 @@ public class ComunicaoSegurancaBarragemController {
 		alerta.setNomeUsuarioLogado(request.getParameter(Constants.NOME_USUARIO_LOGADO));
 		alerta.setEmailUsuarioLogado(request.getParameter(Constants.EMAIL_USUARIO_LOGADO));
 		
-		this.moduloAlertaService.acionaModuloSegurancaComunicacaoEvacuacao(alerta);
+		// Tópico exclusivo para acionar sirenes, alarmes e emails.
+		if (NivelAlerta.NIVEL_4_ROMPIMENTO_IMINENTE.equals(alerta.getNivel())) {
+			this.moduloAlertaService.acionaModuloSegurancaComunicacaoEvacuacao(alerta);
+		}
+		
+		
 		this.moduloAlertaService.acionaModuloSegurancaComunicacaoSitemaCorpoDeBombeiros(alerta);
 		this.moduloAlertaService.acionaModuloSegurancaIntegracaoSistemaDefesaCivil(alerta);
 	}

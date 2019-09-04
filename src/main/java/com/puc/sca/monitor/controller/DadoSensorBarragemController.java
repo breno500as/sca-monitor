@@ -36,6 +36,7 @@ public class DadoSensorBarragemController {
 	public void incluiDadosSensor(@RequestBody DadoSensorBarragem dadoSensorBarragem) {
 		
 		if (NivelAlerta.NIVEL_4_ROMPIMENTO_IMINENTE.equals(dadoSensorBarragem.getNivelAlerta())) {
+			// Tópico exclusivo para acionar sirenes, alarmes e emails.
 			this.moduloAlertaService.acionaModuloSegurancaComunicacaoEvacuacao(new Alerta(dadoSensorBarragem.getNivelAlerta()));
 			this.moduloAlertaService.acionaModuloSegurancaComunicacaoSitemaCorpoDeBombeiros(new Alerta(dadoSensorBarragem.getNivelAlerta()));
 			this.moduloAlertaService.acionaModuloSegurancaIntegracaoSistemaDefesaCivil(new Alerta(dadoSensorBarragem.getNivelAlerta()));
