@@ -5,7 +5,13 @@ import java.time.LocalDateTime;
 import org.springframework.data.annotation.Id;
 
 import com.puc.sca.integration.util.NivelAlerta;
-import com.puc.sca.monitor.enums.TipoSensor;
+
+/**
+ * TODO - Mover classes e pacotes para um repositório local (nexus por exemplo).
+ * 
+ * @author breno
+ *
+ */
 
 public class DadoSensorBarragem {
 
@@ -20,7 +26,7 @@ public class DadoSensorBarragem {
 
 	private LocalDateTime dataCriacaoDadoSensor;
 
-	private LocalDateTime dataCriacaoRegistro = LocalDateTime.now();
+	private LocalDateTime dataCriacaoRegistro;
 
 	public String getId() {
 		return id;
