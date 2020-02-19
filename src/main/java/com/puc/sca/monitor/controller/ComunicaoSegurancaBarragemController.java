@@ -36,7 +36,7 @@ public class ComunicaoSegurancaBarragemController {
 		alerta.setEmailUsuarioLogado(request.getParameter(Constants.EMAIL_USUARIO_LOGADO));
 		
 		// Tópico exclusivo para acionar sirenes, alarmes e emails.
-		if (NivelAlerta.NIVEL_4_ROMPIMENTO_IMINENTE.equals(alerta.getNivel())) {
+		if (NivelAlerta.ROMPIMENTO_IMINENTE.equals(alerta.getNivel())) {
 			this.moduloAlertaService.acionaModuloSegurancaComunicacaoEvacuacao(alerta);
 		}
 		
