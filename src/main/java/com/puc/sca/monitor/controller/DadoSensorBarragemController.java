@@ -1,21 +1,14 @@
 package com.puc.sca.monitor.controller;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.netflix.appinfo.InstanceInfo;
-import com.netflix.discovery.EurekaClient;
 import com.puc.sca.integration.util.Alerta;
 import com.puc.sca.integration.util.NivelAlerta;
-import com.puc.sca.monitor.feign.clients.DadoMonitoramentoClient;
+import com.puc.sca.monitor.feign.clients.DadoMonitoramentoFeignClient;
 import com.puc.sca.monitor.model.DadoSensorBarragem;
 import com.puc.sca.monitor.service.ModuloAlertaService;
 
@@ -34,7 +27,7 @@ public class DadoSensorBarragemController {
 	private ModuloAlertaService moduloAlertaService;
 	
 	@Autowired
-	private DadoMonitoramentoClient dadoMonitoramentoClient;
+	private DadoMonitoramentoFeignClient dadoMonitoramentoFeignClient;
 	
 	
 
@@ -48,36 +41,9 @@ public class DadoSensorBarragemController {
 			this.moduloAlertaService.acionaModuloSegurancaIntegracaoSistemaDefesaCivil(new Alerta(dadoSensorBarragem.getNivelAlerta()));
 		}
 		
-		// this.enviaDadoSensorMicroservicoBI(dadoSensorBarragem);
-		
-		this.dadoMonitoramentoClient.post(dadoSensorBarragem);
+		this.dadoMonitoramentoFeignClient.post(dadoSensorBarragem);
 	}
 
-	@Autowired
-	private EurekaClient discoveryClient;
-	
-	
-	private void enviaDadoSensorMicroservicoBI(DadoSensorBarragem dadoSensorBarragem) {
-		
-		try {
-
-			final ObjectMapper objectMapper = new ObjectMapper();
-			final HttpClient httpClient = HttpClients.createDefault();
-			String json = objectMapper.writeValueAsString(dadoSensorBarragem);
-			
-			InstanceInfo instance = discoveryClient.getNextServerFromEureka("sca-bi", false);
-			final HttpPost httpPost = new HttpPost(instance.getHomePageUrl() + "bi/dados-monitoramento");
-			
-			StringEntity entity = new StringEntity(json);
-			httpPost.setEntity(entity);
-			httpPost.setHeader("Content-type", "application/json");
-			httpPost.setEntity(entity);
-			httpClient.execute(httpPost);
-		} catch (Exception e) {
-			// TODO: logar e tratar exceção
-			e.printStackTrace();
-		} 
-
-	} 
+	 
 
 }
