@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 
-import com.puc.sca.integration.util.NivelAlerta;
+import com.puc.util.pojo.NivelAlerta;
 
 /**
  * TODO - Mover classes e pacotes para um repositório local (nexus por exemplo).

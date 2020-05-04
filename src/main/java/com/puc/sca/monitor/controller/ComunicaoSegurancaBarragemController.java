@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.puc.sca.integration.util.Alerta;
-import com.puc.sca.integration.util.Constants;
-import com.puc.sca.integration.util.NivelAlerta;
 import com.puc.sca.monitor.service.ModuloAlertaService;
+import com.puc.util.pojo.Alerta;
+import com.puc.util.pojo.Constants;
+import com.puc.util.pojo.NivelAlerta;
 
 
 /**

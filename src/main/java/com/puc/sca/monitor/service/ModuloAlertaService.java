@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
-import com.puc.sca.integration.util.Alerta;
-import com.puc.sca.integration.util.Constants;
+import com.puc.util.pojo.Alerta;
+import com.puc.util.pojo.Constants;
 
 @Service
 public class ModuloAlertaService {
