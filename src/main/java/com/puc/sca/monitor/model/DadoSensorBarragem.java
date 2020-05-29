@@ -5,14 +5,9 @@ import java.time.LocalDateTime;
 import org.springframework.data.annotation.Id;
 
 import com.puc.util.pojo.NivelAlerta;
+import com.puc.util.pojo.TipoSensor;
 
-/**
- * TODO - Mover classes e pacotes para um repositório local (nexus por exemplo).
- * 
- * @author breno
- *
- */
-
+ 
 public class DadoSensorBarragem {
 
 	@Id
