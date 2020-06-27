@@ -23,110 +23,36 @@
 	<profiles>
 		<profile>
 			<id>dev</id>
-			<repositories>
-				<repository>
-					<id>central</id>
-					<url>https://repo1.maven.org/maven2</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>github</id>
-					<name>GitHub OWNER Apache Maven Packages</name>
-					<url>https://maven.pkg.github.com/breno500as/sca-util</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<activatedProperties>dev</activatedProperties>
+			</properties>
 		</profile>
-
 		<profile>
 			<id>test</id>
-			<repositories>
-				<repository>
-					<id>central</id>
-					<url>https://repo1.maven.org/maven2</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>github</id>
-					<name>GitHub OWNER Apache Maven Packages</name>
-					<url>https://maven.pkg.github.com/breno500as/sca-util</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
+			<properties>
+				<activatedProperties>test</activatedProperties>
+			</properties>
 		</profile>
-
 		<profile>
 			<id>hml</id>
-			<repositories>
-				<repository>
-					<id>central</id>
-					<url>https://repo1.maven.org/maven2</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>github</id>
-					<name>GitHub OWNER Apache Maven Packages</name>
-					<url>https://maven.pkg.github.com/breno500as/sca-util</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
+			<properties>
+				<activatedProperties>hml</activatedProperties>
+			</properties>
 		</profile>
-
 		<profile>
-			<id>prd</id>
-			<repositories>
-				<repository>
-					<id>central</id>
-					<url>https://repo1.maven.org/maven2</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>github</id>
-					<name>GitHub OWNER Apache Maven Packages</name>
-					<url>https://maven.pkg.github.com/breno500as/sca-util</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
+			<id>prd-amazon</id>
+			<properties>
+				<activatedProperties>prd-amazon</activatedProperties>
+			</properties>
+		</profile>
+		<profile>
+			<id>prd-heroku</id>
+			<properties>
+				<activatedProperties>prd-heroku</activatedProperties>
+			</properties>
 		</profile>
 	</profiles>
 
