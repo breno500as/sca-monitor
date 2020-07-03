@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.puc.sca.monitor.feign.clients.DadoMonitoramentoFeignClient;
 import com.puc.sca.monitor.model.DadoSensorBarragem;
 import com.puc.sca.monitor.service.ModuloAlertaService;
-import com.puc.util.pojo.Alerta;
-import com.puc.util.pojo.NivelAlerta;
+import com.puc.sca.util.pojo.Alerta;
+import com.puc.sca.util.pojo.NivelAlerta;
 
 /**
  * Controller integrado a sensores IOT instalados na barragem informando os

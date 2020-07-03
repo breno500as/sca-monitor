@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 
-import com.puc.util.pojo.NivelAlerta;
-import com.puc.util.pojo.TipoSensor;
+import com.puc.sca.util.pojo.NivelAlerta;
+import com.puc.sca.util.pojo.TipoSensor;
 
  
 public class DadoSensorBarragem {
