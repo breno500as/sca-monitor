@@ -3,6 +3,7 @@ package com.puc.sca.monitor.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,7 @@ public class ComunicaoSegurancaBarragemController {
 
 
 	@PostMapping
-	public void informaSistemasIntegrados(@RequestBody Alerta alerta, HttpServletRequest request) {
+	public ResponseEntity<?> informaSistemasIntegrados(@RequestBody Alerta alerta, HttpServletRequest request) {
 		
 		alerta.setNomeUsuarioLogado(request.getParameter(Constants.NOME_USUARIO_LOGADO));
 		alerta.setEmailUsuarioLogado(request.getParameter(Constants.EMAIL_USUARIO_LOGADO));
@@ -43,6 +44,8 @@ public class ComunicaoSegurancaBarragemController {
 		
 		this.moduloAlertaService.acionaModuloSegurancaComunicacaoSitemaCorpoDeBombeiros(alerta);
 		this.moduloAlertaService.acionaModuloSegurancaIntegracaoSistemaDefesaCivil(alerta);
+	 
+		return ResponseEntity.noContent().build();
 	}
 
  

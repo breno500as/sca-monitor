@@ -1,6 +1,7 @@
 package com.puc.sca.monitor.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +33,7 @@ public class DadoSensorBarragemController {
 	
 
 	@PostMapping
-	public void recebeDadosSensor(@RequestBody DadoSensorBarragem dadoSensorBarragem) {
+	public ResponseEntity<?> recebeDadosSensor(@RequestBody DadoSensorBarragem dadoSensorBarragem) {
 
 		if (NivelAlerta.ROMPIMENTO_IMINENTE.equals(dadoSensorBarragem.getNivelAlerta())) {
 			// Tópico exclusivo para acionar sirenes, alarmes e emails.
@@ -42,7 +43,11 @@ public class DadoSensorBarragemController {
 		}
 		
 		this.dadoMonitoramentoFeignClient.post(dadoSensorBarragem);
+	
+		return ResponseEntity.noContent().build();
+	
 	}
+	
 
 	 
 
