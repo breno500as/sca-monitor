@@ -4,8 +4,11 @@ package com.puc.sca.monitor.exception.handler;
 import java.time.LocalDateTime;
 
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -34,6 +37,21 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 						request.getDescription(false),
 						ex.getMessage());
 		return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+	}
+	
+	/**
+	 * Handle de exceções do Bean Validation.
+	 */
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+		final Object [] errors = ex.getBindingResult().getAllErrors().stream().map(ObjectError::getDefaultMessage).toArray();
+		final ExceptionResponse exceptionResponse = 
+				new ExceptionResponse(
+						LocalDateTime.now(),
+						request.getDescription(false),
+						errors);
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
 	}
 	
 
